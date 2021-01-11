@@ -11,6 +11,7 @@ export class ShipsService {
 
   constructor(private HttpClient: HttpClient) {
     this.baseUrl = 'https://swapi.dev/api'
+    // paginación 'https://swapi.dev/api/?page=1'
   }
 
   getAll(): Promise<Ship[]> {
