@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { StarshipComponent } from './ships/starship/starship.component';
 import { StarshipsListComponent } from './ships/starships-list/starships-list.component';
-import { StarshipsFormComponent } from './starships-form/starships-form.component';
+import { StarshipsFormComponent } from './ships/starships-form/starships-form.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/ships' },
