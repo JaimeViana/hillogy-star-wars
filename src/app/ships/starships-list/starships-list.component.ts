@@ -8,41 +8,46 @@ import { Ship } from 'src/app/models/ship.model';
   styleUrls: ['./starships-list.component.css']
 })
 export class StarshipsListComponent implements OnInit {
-
-  data: any;
-  ships: Ship[];
+  ships: Array<Ship>
   initialPageUrl: string;
-  page: number;
+  previous?: string;
+  next?: string;
+  currentId: number;
 
   constructor(private shipsService: ShipsService) {
-    this.page = 1;
-    this.initialPageUrl = 'https://swapi.dev/api/starships/?page=' + this.page;
+    this.initialPageUrl = 'https://swapi.dev/api/starships/?page=1';
   }
 
-  async ngOnInit(): Promise<void> {
+  async ngOnInit() {
+    this.getPage(this.initialPageUrl)
+  }
+
+  prevPage() {
+    (this.previous !== null) ? this.getPage(this.previous) : null;
+  }
+
+  nextPage() {
+    (this.next !== null) ? this.getPage(this.next) : null;
+  }
+
+  async getPage(targetUrl) {
     try {
-      this.data = await this.shipsService.getByPage(this.initialPageUrl);
-      this.ships = this.data.results
-      // console.log(this.data);
+      const response = await this.shipsService.getByPage(targetUrl);
+      this.ships = response.results
+      this.setShipId()
+      this.previous = response.previous
+      this.next = response.next
     } catch (error) {
       console.log(error);
     }
-    //asigno un id a cada ship para gestionar el visionado de imágenes
+  }
+
+  //asigno un id a cada ship para gestionar el visionado de imágenes porque la API no las proporciona.
+  setShipId() {
     this.ships.forEach(ship => {
       const urlSplit = ship.url.split('/');
       ship.id = urlSplit[urlSplit.length - 2];
     })
   }
 
-  // prevPage() {
-  //   (this.data.previous !== null) ? this.page-- : "";
-  //   console.log(this.initialPageUrl);
-  //   console.log('página cuando pulso PREV', this.page);
-  // }
-
-
-  // nextPage() {
-  //   (this.data.next != null) ? this.page++ : "";
-  //   console.log('página cuando pulso NEXT', this.page);
-  // }
 }
