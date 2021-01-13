@@ -8,10 +8,11 @@ import { ShipsService } from 'src/app/app-services/ships.service';
   templateUrl: './starships-form.component.html',
   styleUrls: ['./starships-form.component.css']
 })
-export class StarshipsFormComponent implements OnInit {
+export class StarshipsFormComponent {
 
   form: FormGroup;
   update: boolean;
+  newShip: any;
 
   constructor(
     private shipsService: ShipsService,
@@ -31,27 +32,12 @@ export class StarshipsFormComponent implements OnInit {
     this.update = false;
   }
 
-  async ngOnInit() {
-    const params = this.activatedRoute.snapshot.params
-    if (params.shipId) {
-      const ship = await this.shipsService.getById(params.shipId);
-      this.form = new FormGroup({
-        photoUrl: new FormControl(`https://starwars-visualguide.com/assets/img/starships/${params.shipId}.jpg`),
-        name: new FormControl(`${ship.name}`),
-        model: new FormControl(`${ship.model}`),
-        starship_class: new FormControl(`${ship.starship_class}`),
-        cargo_capacity: new FormControl(`${ship.cargo_capacity}`),
-        length: new FormControl(`${ship.length}`),
-        max_atmosphering_speed: new FormControl(`${ship.max_atmosphering_speed}`),
-        crew: new FormControl(`${ship.crew}`),
-        passengers: new FormControl(`${ship.passengers}`),
-      });
-      this.update = true;
-    }
+  async onSubmit() {
+    this.newShip = this.form.value;
+    console.log(this.newShip);
+    const msg = await this.shipsService.addShip(this.newShip);
+    console.log(msg);
+
   }
-
-  updateArtist() { }
-
-  onSubmit() { }
 
 }

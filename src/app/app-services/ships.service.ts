@@ -8,35 +8,31 @@ import { Ship } from '../models/ship.model';
 export class ShipsService {
 
   baseUrl: string;
+  currentId: number;
 
   constructor(private HttpClient: HttpClient) {
     this.baseUrl = 'https://swapi.dev/api'
     // paginación 'https://swapi.dev/api/starships?page=1'
+    this.currentId = 75;
   }
 
-  getByPage(url): Promise<Ship[]> {
-    return this.HttpClient.get<Ship[]>(url).toPromise()
+  getByPage(url): Promise<any> {
+    return this.HttpClient.get<any>(url).toPromise()
   }
 
-  getById(shipId): Promise<Ship> {
+  getById(shipId): Promise<any> {
     return this.HttpClient.get<Ship>(`${this.baseUrl}/starships/${shipId}`).toPromise()
   }
 
-  // create(formValue): Promise<Ship> {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //     })
-  //   }
-  //   return this.HttpClient.post<Ship>(`${this.baseUrl}/create`, formValue, httpOptions).toPromise()
-  // }
-
-  // update(shipId, body): Promise<Ship> {
-  //   return this.HttpClient.put<Ship>(`${this.baseUrl}/starships/${shipId}`, body).toPromise()
-  // }
-
-  // remove(shipId): Promise<Ship> {
-  //   return this.HttpClient.delete<Ship>(`${this.baseUrl}/starships/${shipId}`).toPromise()
-  // }
+  addShip(ship): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const shipsList = JSON.parse(localStorage.getItem('ships-list'));
+      ship.id = this.currentId;
+      shipsList.push(ship);
+      this.currentId++;
+      localStorage.setItem('ships-list', JSON.stringify(shipsList));
+      resolve('new starship added successfully')
+    })
+  }
 }
 

@@ -2,11 +2,7 @@
     <div class="col-md-4 offset-md-2">
         <div class="card rounded shadow bg-dark">
             <div class="card-body">
-                <form [formGroup]="form" (ngSubmit)="update ? updateArtist() : onSubmit()">
-                    <div class="form-group">
-                        <input type="url" placeholder="Ship Photo Url" class="form-control" autofocus
-                            formControlName="photoUrl">
-                    </div>
+                <form [formGroup]="form" (click)="onSubmit()">
                     <div class="form-group">
                         <input type="text" placeholder="Ship name" class="form-control" autofocus
                             formControlName="name">
@@ -17,6 +13,10 @@
                     <div class="form-group">
                         <input type="text" placeholder="Ship class" class="form-control"
                             formControlName="starship_class">
+                    </div>
+                    <div class="form-group">
+                        <input type="url" placeholder="Ship Photo Url" class="form-control" autofocus
+                            formControlName="photoUrl">
                     </div>
                     <div class="form-group">
                         <input type="text" placeholder="Cargo Capacity" class="form-control"
@@ -60,9 +60,9 @@
                 <p class="text-muted">Total Passengers: {{this.form.value.passengers}} </p>
             </div>
             <div class="card-footer text-muted d-flex justify-content-around align-items-center">
-                <a class="btn btn-outline-info rounded">
+                <!-- <a class="btn btn-outline-info rounded">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
+                </a> -->
                 <a class="btn btn-outline-danger rounded">
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                 </a>
