@@ -1,18 +1,20 @@
 <div class="d-flex justify-content-center">
     <div class="card rounded text-center shadow bg-dark my-3">
-        <h3 class="card-header">SHIP NAME</h3>
-        <p class="pt-2">Model: </p>
-        <p> Class: </p>
-        <img src="../../../assets/not-available.png" alt="card image" class="card-img-top">
+        <h2 class="card-header">{{ship?.name}}</h2>
+        <p class="pt-2 text-muted">Model: {{ship?.model}}</p>
+        <p class="text-muted"> Class: {{ship?.starship_class}}</p>
+        <img src="https://starwars-visualguide.com/assets/img/starships/{{imgId}}.jpg"
+            onerror="this.onerror=null;this.src='https://starwars-visualguide.com/assets/img/placeholder.jpg';"
+            alt="starship card image" class="card-img-top mt-3 mb-1">
         <div class="card-body">
-            <p class="text-muted">Cargo Capacity: </p>
-            <p class="text-muted">Length:</p>
-            <p class="text-muted">Speed: </p>
-            <p class="text-muted">Crew: </p>
-            <p class="text-muted">Total Passengers: </p>
+            <p class="text-muted">Cargo Capacity: {{ship?.cargo_capacity}} Kgs</p>
+            <p class="text-muted">Length: {{ship?.length}} m</p>
+            <p class="text-muted">Speed: {{ship?.max_atmosphering_speed}}</p>
+            <p class="text-muted">Crew: {{ship?.crew}} </p>
+            <p class="text-muted">Total Passengers: {{ship?.passengers}} </p>
         </div>
         <div class="card-footer text-muted d-flex justify-content-around align-items-center">
-            <a [routerLink]="['/ships/edit/' + 1]" class="btn btn-outline-info rounded">
+            <a [routerLink]="['/ships/edit/' + ship?.id]" class="btn btn-outline-info rounded">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
             </a>
             <a class="btn btn-outline-danger rounded">

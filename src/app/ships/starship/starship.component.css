@@ -9,3 +9,7 @@
     height: 250px;
     object-fit: contain;
 }
+
+h2 {
+    font-weight: 900;
+}

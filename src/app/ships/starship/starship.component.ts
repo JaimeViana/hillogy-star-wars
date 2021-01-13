@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ship } from '../../models/ship.model';
 import { ShipsService } from '../../app-services/ships.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-starship',
@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class StarshipComponent implements OnInit {
 
   ship: Ship;
+  imgId: Params;
 
   constructor(
     private shipsService: ShipsService,
@@ -22,6 +23,7 @@ export class StarshipComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       try {
         this.ship = await this.shipsService.getById(params.shipId);
+        this.imgId = params.shipId; // creo una variable distinta debido a que no puedo usar ship?.id en la url de la imagen en el html
       } catch (error) {
         console.log(error);
       }
