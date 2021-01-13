@@ -17,4 +17,5 @@ export interface Ship {
     created: string;
     edited: string;
     url: string;
+    id: string;
 }

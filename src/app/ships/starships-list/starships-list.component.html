@@ -1,9 +1,16 @@
 <div class="row">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let ship of ships">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let ship of ships; let i = index ">
         <a class="card shadow bg-dark my-3 rounded">
-            <img [src]="ship.url" alt="spaceship card image" class="card-image-top rounded">
+            <img src="https://starwars-visualguide.com/assets/img/starships/{{ship.id}}.jpg"
+                onerror="this.onerror=null;this.src='https://starwars-visualguide.com/assets/img/placeholder.jpg'; "
+                alt="spaceship card image" class="card-image-top rounded">
             <div class="card-footer d-flex justify-content-around align-items-center">
                 <h5>{{ship.name}}</h5>
             </div>
         </a>
     </div>
+</div>
+<!-- <div class="botones">
+    <button type="button" class="btn btn-outline-warning m-2" (click)="prevPage()">PREV</button>
+    <button type="button" class="btn btn-outline-warning" (click)="nextPage()">NEXT</button>
+</div> -->
