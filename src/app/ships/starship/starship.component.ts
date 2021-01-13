@@ -21,8 +21,7 @@ export class StarshipComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async params => {
       try {
-        this.ship = await this.shipsService.getById(params.shipId);
-        this.imgId = params.shipId; // creo una variable distinta debido a que no puedo usar ship?.id en la url de la imagen en el html
+        this.ship = new Ship(await this.shipsService.getById(params.shipId));
       } catch (error) {
         console.log(error);
       }

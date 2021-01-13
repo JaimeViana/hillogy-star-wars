@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShipsService } from 'src/app/app-services/ships.service';
-import { Ship } from 'src/app/models/ship.model';
+import { Ship, ShipInfo } from 'src/app/models/ship.model';
 
 @Component({
   selector: 'app-starships-list',
@@ -8,7 +8,7 @@ import { Ship } from 'src/app/models/ship.model';
   styleUrls: ['./starships-list.component.css']
 })
 export class StarshipsListComponent implements OnInit {
-  ships: Array<Ship>
+  shipsList: Array<Ship>
   initialPageUrl: string;
   previous?: string;
   next?: string;
@@ -33,21 +33,11 @@ export class StarshipsListComponent implements OnInit {
   async getPage(targetUrl) {
     try {
       const response = await this.shipsService.getByPage(targetUrl);
-      this.ships = response.results
-      this.setShipId()
+      this.shipsList = response.results.map((shipInfo: ShipInfo) => new Ship(shipInfo))
       this.previous = response.previous
       this.next = response.next
     } catch (error) {
       console.log(error);
     }
   }
-
-  //asigno un id a cada ship para gestionar el visionado de imágenes porque la API no las proporciona.
-  setShipId() {
-    this.ships.forEach(ship => {
-      const urlSplit = ship.url.split('/');
-      ship.id = urlSplit[urlSplit.length - 2];
-    })
-  }
-
 }
