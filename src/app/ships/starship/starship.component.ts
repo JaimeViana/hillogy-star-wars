@@ -22,6 +22,7 @@ export class StarshipComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       try {
         this.ship = new Ship(await this.shipsService.getById(params.shipId));
+        console.log(this.ship)
       } catch (error) {
         console.log(error);
       }

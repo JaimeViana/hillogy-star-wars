@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/ships' },
   { path: 'ships', component: StarshipsListComponent },
   { path: 'ships/new', component: StarshipsFormComponent },
-  { path: 'ships/edit/:shipId', component: StarshipsFormComponent },
   { path: 'ships/:shipId', component: StarshipComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

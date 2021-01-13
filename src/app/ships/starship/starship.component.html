@@ -7,7 +7,7 @@
         </h2>
         <p class="pt-2 text-muted">Model: {{ship?.model}}</p>
         <p class="text-muted"> Class: {{ship?.starship_class}}</p>
-        <img src="https://starwars-visualguide.com/assets/img/starships/{{ship?.id}}.jpg"
+        <img [src]="ship.photoUrl"
             onerror="this.onerror=null;this.src='https://starwars-visualguide.com/assets/img/placeholder.jpg';"
             alt="starship card image" class="card-img-top mt-3 mb-1">
         <div class="card-body">
@@ -18,9 +18,6 @@
             <p class="text-muted">Total Passengers: {{ship?.passengers}} </p>
         </div>
         <div class="card-footer text-muted d-flex justify-content-around align-items-center">
-            <a [routerLink]="['/ships/edit/' + ship?.id]" class="btn btn-outline-info rounded">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-            </a>
             <a class="btn btn-outline-danger rounded">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
