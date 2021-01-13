@@ -1,6 +1,10 @@
 <div class="d-flex justify-content-center">
     <div class="card rounded text-center shadow bg-dark my-3">
-        <h2 class="card-header">{{ship?.name}}</h2>
+        <h2 class="card-header">{{ship?.name}}
+            <a [routerLink]="['/ships/']" class="btn btn-outline-success rounded">
+                <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+            </a>
+        </h2>
         <p class="pt-2 text-muted">Model: {{ship?.model}}</p>
         <p class="text-muted"> Class: {{ship?.starship_class}}</p>
         <img src="https://starwars-visualguide.com/assets/img/starships/{{imgId}}.jpg"
