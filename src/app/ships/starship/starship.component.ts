@@ -15,8 +15,7 @@ export class StarshipComponent implements OnInit {
 
   constructor(
     private shipsService: ShipsService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
