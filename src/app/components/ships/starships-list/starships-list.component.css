@@ -5,6 +5,7 @@
 
 .card {
     max-width: 20rem;
+    max-height: 20rem;
     text-decoration: none;
 }
 
@@ -17,5 +18,6 @@
 
 .card h5 {
     color:yellow;
+
     font-weight: 700;
 }

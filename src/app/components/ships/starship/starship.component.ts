@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ship } from '../../models/ship.model';
-import { ShipsService } from '../../app-services/ships.service';
+import { Ship } from '../../../models/ship.model';
+import { ShipsService } from '../../../app-services/ships.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
