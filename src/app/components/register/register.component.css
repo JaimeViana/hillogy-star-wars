@@ -1,0 +1,14 @@
+h1 {
+    font-weight: 900;
+}
+
+.custom-form {
+    min-width: 300px;
+    max-width: 60%;
+    margin: 0px auto;
+    padding: 2rem 3rem;
+    margin: auto;
+    background-color: #151516;
+    color: yellow;
+    margin-top: 10rem;
+  }

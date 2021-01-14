@@ -1,1 +1,28 @@
-<p>register works!</p>
+<div class="row text-warning">
+    <form [formGroup]="form" class="container custom-form" (ngSubmit)="registerUser()">
+        <div class="row justify-content-center pb-3">
+            <h1>Register</h1>
+        </div>
+        <div class="mb-3">
+            <label for="first-name" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="first-name" formControlName="firstName">
+        </div>
+        <div class="mb-3">
+            <label for="last-name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="last-name" formControlName="lastName">
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" formControlName="userName">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <div class="mb-3">
+            <label for="confirm-password" class="form-label">Repeat the password</label>
+            <input type="password" class="form-control" id="confirm-password" formControlName="attemptedPassword">
+        </div>
+        <button type="submit" class="btn btn-outline-warning btn-block rounded">Register</button>
+    </form>
+</div>
