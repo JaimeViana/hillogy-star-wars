@@ -1,7 +1,12 @@
 <div class="row text-warning">
-    <form [formGroup]="form" class="container custom-form" (ngSubmit)="registerUser()">
+    <form [formGroup]="form" class="container custom-form" (ngSubmit)="register()">
         <div class="row justify-content-center pb-3">
-            <h1>Register</h1>
+            <h1>Register
+                <a [routerLink]="['/login']" class="btn btn-outline-success rounded">
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                </a>
+            </h1>
+
         </div>
         <div class="mb-3">
             <label for="first-name" class="form-label">First Name</label>
