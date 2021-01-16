@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="row">
+    <form [formGroup]="form" class="container custom-form" (ngSubmit)="loginUser(form.value)">
+        <div class="row justify-content-center">
+            <h1>Login</h1>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" formControlName="userName">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-outline-warning btn-block rounded">Login</button>
+        <div>
+            <a [routerLink]="['/register']">Dont have an account? Register here!</a>
+        </div>
+    </form>
+</div>

@@ -15,11 +15,6 @@ export class UserLocalStorageService {
       const currentUsers = JSON.parse(localStorage.getItem('users'));
       users = currentUsers.concat(users)
     }
-    try {
-      localStorage.setItem('users', JSON.stringify(users));
-      return { success: true }
-    } catch (error) {
-      return { success: false }
-    }
+    localStorage.setItem('users', JSON.stringify(users));
   }
 }
