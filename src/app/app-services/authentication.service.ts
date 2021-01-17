@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -10,8 +10,9 @@ export class AuthenticationService {
   users: User[];
 
   constructor() {
-    this.users = JSON.parse(localStorage.getItem('users'));
+    this.users = JSON.parse(localStorage.getItem('users')).map(user => new User(user));
   }
+
 
   checkIfRegistered(userInput: any): boolean {
     if (this.users.find(user => user.userName === userInput.userName && user.password === userInput.password)) {
@@ -22,9 +23,14 @@ export class AuthenticationService {
     }
   }
 
+  getRegisteredUser(userInput: any): User | null {
+    const user = this.users.find((user: User) => user.userName === userInput.userName)
+    return user.comparePassword(userInput.password) ? user : null;
+  }
+
   checkIfLogged(userInput: User): any {
     const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-    loggedUser.userName === userInput.userName && loggedUser.password === userInput.password ? true : false;
+    return loggedUser.userName === userInput.userName && loggedUser.password === userInput.password ? true : false;
   }
 
 

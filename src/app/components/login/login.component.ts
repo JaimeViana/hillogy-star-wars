@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   user: User;
 
   constructor(
-    private userLocalStorageService: UserLocalStorageService,
     private authService: AuthenticationService,
     private router: Router) {
     this.form = new FormGroup({
@@ -32,19 +31,18 @@ export class LoginComponent implements OnInit {
   }
 
 
-  loginUser(user: User) {
-    user = this.form.value;
-
-    if (this.authService.checkIfRegistered(user)) {
-      localStorage.setItem('loggedUser', JSON.stringify(user));
-      this.router.navigate(['/ships']);
+  loginUser(userCredentials: FormGroup) {
+    userCredentials = this.form.value;
+    const registeredUser = this.authService.getRegisteredUser(userCredentials)
+    if (registeredUser) {
+      localStorage.setItem('loggedUser', JSON.stringify(registeredUser));
+      this.router.navigate(['/ships'])
     } else {
-      console.log('something went wrong');
+      alert('Something went wrong!')
     }
   }
 
   logOut() {
     localStorage.setItem('loggedUser', JSON.stringify({}));
-
   }
 }

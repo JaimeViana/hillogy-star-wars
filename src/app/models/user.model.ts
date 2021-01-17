@@ -17,15 +17,17 @@ export class User {
         this.firstName = info.firstName;
         this.lastName = info.lastName;
         this.userName = info.userName;
-        this.password = this.getHashedPassword(info.password);
+        this.password = info.password;
     }
 
-    getHashedPassword(password: string) {
-        return bcrypt.hashSync(password, 10)
-    }
+    // getHashedPassword(password: string) {
+    //     return bcrypt.hashSync(password, 10)
+    // }
 
     comparePassword(attemptedPassword: string) {
-        return bcrypt.compareSync(attemptedPassword, this.password)
+        return attemptedPassword === this.password ? true : false
+        // return bcrypt.compareSync(this.password, attemptedPassword)
+
     }
 
 
