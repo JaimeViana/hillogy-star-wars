@@ -5,10 +5,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { StarshipComponent } from './components/ships/starship/starship.component';
 import { StarshipsListComponent } from './components/ships/starships-list/starships-list.component';
 import { StarshipsFormComponent } from './components/ships/starships-form/starships-form.component';
+import { OnlyLoggedUserGuardService } from './guards/only-logged-user-guard.service';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/ships' },
-  { path: 'ships', component: StarshipsListComponent },
+  { path: 'ships', component: StarshipsListComponent, canActivate: [OnlyLoggedUserGuardService] },
   { path: 'ships/new', component: StarshipsFormComponent },
   { path: 'ships/:shipId', component: StarshipComponent },
   { path: 'login', component: LoginComponent },

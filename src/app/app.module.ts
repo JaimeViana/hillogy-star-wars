@@ -10,6 +10,7 @@ import { StarshipsFormComponent } from './components/ships/starships-form/starsh
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OnlyLoggedUserGuardService } from '../app/guards/only-logged-user-guard.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [OnlyLoggedUserGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
