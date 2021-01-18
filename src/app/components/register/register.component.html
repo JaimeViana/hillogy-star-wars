@@ -10,8 +10,12 @@
         </div>
         <div class="mb-3 row">
             <div class="col-6">
-                <label for="first-name" class="form-label">First Name</label>
+                <label for="first-name" class="form-label">First Name*</label>
                 <input type="text" class="form-control" id="first-name" formControlName="firstName">
+                <small class="error"
+                    *ngIf="form.controls.firstName.errors?.required && form.controls.firstName.touched">
+                    First name field is required
+                </small>
             </div>
             <div class="col 6">
                 <label for="last-name" class="form-label">Last Name</label>
@@ -19,17 +23,28 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
+            <label for="username" class="form-label">Username*</label>
             <input type="text" class="form-control" id="username" formControlName="username">
+            <small class="error" *ngIf="form.controls.username.errors?.required && form.controls.username.touched">
+                Username field is required
+            </small>
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
+            <label for="password" class="form-label">Password*</label>
             <input type="password" class="form-control" id="password" formControlName="password">
+            <small class="error" *ngIf="form.controls.password.errors?.required && form.controls.password.touched">
+                Password field is required
+            </small>
         </div>
         <div class="mb-3">
-            <label for="confirm-password" class="form-label">Repeat the password</label>
+            <label for="confirm-password" class="form-label">Repeat the password*</label>
             <input type="password" class="form-control" id="confirm-password" formControlName="attemptedPassword">
+            <small class="error"
+                *ngIf="form.controls.attemptedPassword.errors?.required && form.controls.attemptedPassword.touched">
+                You have to repeat the password
+            </small>
         </div>
-        <button type="submit" class="btn btn-outline-warning btn-block rounded">Register</button>
+        <button type="submit" class="btn btn-outline-warning btn-block rounded"
+            [disabled]="!form.valid">Register</button>
     </form>
 </div>

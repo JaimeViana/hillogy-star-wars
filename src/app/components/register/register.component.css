@@ -11,3 +11,19 @@ h1 {
     background-color: rgba(29, 29, 29, 0.678);
     color: yellow;
   }
+
+input {
+    background-color: rgb(201, 200, 196);
+}
+
+input.ng-valid.ng-touched {
+    border: 1px solid lightgreen;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.error {
+    color: tomato;
+}

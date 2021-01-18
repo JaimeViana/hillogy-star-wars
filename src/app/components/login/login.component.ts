@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.showModal();
       this.router.navigate(['/ships'])
     } else {
-      alert('Something went wrong!')
+      this.showError();
     }
   }
 
@@ -50,5 +50,13 @@ export class LoginComponent implements OnInit {
       "You have been successfully logged in!",
       "success"
     );
+  }
+
+  showError() {
+    Swal.fire(
+      "Nope, nope...",
+      "Something went wrong",
+      "error"
+    )
   }
 }

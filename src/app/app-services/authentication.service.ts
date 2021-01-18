@@ -14,17 +14,22 @@ export class AuthenticationService {
   }
 
 
+  checkIfRepeatedUsername(username: any): boolean {
+    return (this.users.find(user => user.username === username)) ? true : false;
+  }
+
   checkIfRegistered(userInput: any): boolean {
     if (this.users.find(user => user.username === userInput.username && user.password === userInput.password)) {
       return true;
     } else {
-      console.log('user not registered');
       return false;
     }
   }
 
   getRegisteredUser({ username, password }: { username: string, password: string }): User | null {
-    const user = this.users.find((user: User) => user.username === username)
+    console.log(username);
+
+    const user = this.users.find((user: User) => user.username === username);
     console.log(user);
 
     return user.comparePassword(password) ? user : null;
