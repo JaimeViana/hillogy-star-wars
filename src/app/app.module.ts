@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OnlyLoggedUserGuardService } from '../app/guards/only-logged-user-guard.service';
+import { NavbarMenuComponent } from '../app/components/navbar-menu/navbar-menu.component';
+import { FakeComponent } from './components/fake/fake.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { OnlyLoggedUserGuardService } from '../app/guards/only-logged-user-guard
     StarshipComponent,
     StarshipsFormComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarMenuComponent,
+    FakeComponent
   ],
   imports: [
     BrowserModule,

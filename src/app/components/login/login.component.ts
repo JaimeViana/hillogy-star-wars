@@ -41,8 +41,4 @@ export class LoginComponent implements OnInit {
       alert('Something went wrong!')
     }
   }
-
-  logOut() {
-    localStorage.setItem('loggedUser', JSON.stringify({}));
-  }
 }
