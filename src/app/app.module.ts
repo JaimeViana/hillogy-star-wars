@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OnlyLoggedUserGuardService } from '../app/guards/only-logged-user-guard.service';
 import { NavbarMenuComponent } from '../app/components/navbar-menu/navbar-menu.component';
 import { FakeComponent } from './components/fake/fake.component';
+import { CacheInterceptor } from '../app/app-services/cache/cache.interceptor';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { FakeComponent } from './components/fake/fake.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [OnlyLoggedUserGuardService],
+  providers: [OnlyLoggedUserGuardService, { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
