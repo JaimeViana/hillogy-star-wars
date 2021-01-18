@@ -32,10 +32,7 @@ export class LoginComponent implements OnInit {
 
 
   loginUser({ username, password }: { username: string, password: string }) {
-    console.log(username, password);
-
     const registeredUser = this.authService.getRegisteredUser({ username, password });
-    console.log(registeredUser);
 
     if (registeredUser) {
       localStorage.setItem('loggedUser', JSON.stringify(registeredUser));

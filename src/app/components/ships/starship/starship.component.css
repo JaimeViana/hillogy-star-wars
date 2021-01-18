@@ -1,6 +1,7 @@
 .card {
     width: 30rem;
     color: yellow;
+    background-color: rgba(29, 29, 29, 0.678);
 }
 
 .card img {

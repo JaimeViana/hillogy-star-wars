@@ -36,7 +36,6 @@ export class RegisterComponent {
       password: this.form.controls.password.value
     });
 
-    console.log(user);
     user.setHashedPassword(user.password);
 
     if (user.comparePassword(this.form.controls.attemptedPassword.value)) {

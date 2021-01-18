@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-4 offset-md-2">
-        <div class="card rounded shadow bg-dark">
+        <div class="card rounded shadow">
             <div class="card-body">
-                <form [formGroup]="form" (click)="onSubmit()">
+                <form [formGroup]="form" [routerLink]="['/ships']" (click)="onSubmit()">
                     <div class="form-group">
                         <input type="text" placeholder="Ship name" class="form-control" autofocus
                             formControlName="name">
@@ -36,13 +36,13 @@
                         <input type="text" placeholder="Total Passengers" class="form-control"
                             formControlName="passengers">
                     </div>
-                    <input type="submit" value="SAVE" class="btn btn-outline-success btn-block rounded">
+                    <input type="submit" value="CREATE" class="btn btn-outline-warning btn-block rounded">
                 </form>
             </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card rounded text-center shadow bg-dark my-3">
+        <div class="card rounded text-center shadow mb-3">
             <h2 class="card-header">{{this.form.value.name}}
                 <a [routerLink]="['/ships/']" class="btn btn-outline-success rounded">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
@@ -60,14 +60,7 @@
                 <p class="text-muted">Total Passengers: {{this.form.value.passengers}} </p>
             </div>
             <div class="card-footer text-muted d-flex justify-content-around align-items-center">
-                <!-- <a class="btn btn-outline-info rounded">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a> -->
-                <a class="btn btn-outline-danger rounded">
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                </a>
             </div>
         </div>
     </div>
 </div>
-<!-- {{form.value | json}} -->

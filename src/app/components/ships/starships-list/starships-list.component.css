@@ -3,6 +3,10 @@
     transition: 0.3s;
 }
 
+.row div a {
+background-color: rgba(29, 29, 29, 0.678);
+}
+
 .card {
     max-width: 20rem;
     max-height: 20rem;

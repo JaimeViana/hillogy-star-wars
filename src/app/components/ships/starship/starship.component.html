@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-    <div class="card rounded text-center shadow bg-dark my-3">
+    <div class="card rounded text-center shadow mb-5">
         <h2 class="card-header">{{ship?.name}}
             <a [routerLink]="['/ships/']" class="btn btn-outline-success rounded">
                 <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
@@ -17,10 +17,7 @@
             <p class="text-muted">Crew: {{ship?.crew}} </p>
             <p class="text-muted">Total Passengers: {{ship?.passengers}} </p>
         </div>
-        <div class="card-footer text-muted d-flex justify-content-around align-items-center">
-            <a class="btn btn-outline-danger rounded">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </a>
+        <div class="card-footer p-4">
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let ship of shipsList; let i = index ">
-        <a [routerLink]="['/ships/' + ship.id]" class="card shadow bg-dark my-3 rounded">
+        <a [routerLink]="['/ships/' + ship.id]" class="card shadow my-3 rounded">
             <img src="https://starwars-visualguide.com/assets/img/starships/{{ship.id}}.jpg"
                 onerror="this.onerror=null;this.src='https://starwars-visualguide.com/assets/img/placeholder.jpg'; "
                 alt="spaceship card image" class="card-image-top rounded">
@@ -10,7 +10,7 @@
         </a>
     </div>
 </div>
-<div class="botones">
+<div class="botones mb-4">
     <button type="button" class="btn btn-outline-warning m-2" (click)="prevPage()">PREV</button>
     <button type="button" class="btn btn-outline-warning" (click)="nextPage()">NEXT</button>
 </div>

@@ -3,14 +3,11 @@ nav {
     top: 0;
     width: 100%;
     z-index: 100;
+    background-color: black;
 }
 
 nav img {
     width: 7rem;
-}
-
-nav ul li a {
-    color: black;
 }
 
 nav ul li a:hover {
@@ -25,6 +22,11 @@ nav ul li:last-child a i {
 nav ul li:last-child a i:hover {
     color: red;
     transition: 0.5s;
+}
+
+.container a img:hover {
+    transform: scale(1.05);
+    transition: 0.4s;
 }
 
 .active {

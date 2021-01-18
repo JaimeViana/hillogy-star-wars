@@ -8,7 +8,6 @@ h1 {
     margin: 0px auto;
     padding: 2rem 3rem;
     margin: auto;
-    background-color: #151516;
+    background-color: rgba(29, 29, 29, 0.678);
     color: yellow;
-    margin-top: 10rem;
   }

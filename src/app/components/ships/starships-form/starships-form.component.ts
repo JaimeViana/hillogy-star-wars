@@ -34,10 +34,7 @@ export class StarshipsFormComponent {
 
   async onSubmit() {
     this.newShip = this.form.value;
-    console.log(this.newShip);
     const msg = await this.shipsService.addShip(this.newShip);
-    console.log(msg);
-
   }
 
 }
