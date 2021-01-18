@@ -2,17 +2,28 @@
     <div class="col-md-4 offset-md-2">
         <div class="card rounded shadow">
             <div class="card-body">
-                <form [formGroup]="form" [routerLink]="['/ships']" (click)="onSubmit()">
+                <form [formGroup]="form" (click)="onSubmit()">
                     <div class="form-group">
-                        <input type="text" placeholder="Ship name" class="form-control" autofocus
+                        <input type="text" placeholder="Ship name*" class="form-control" autofocus
                             formControlName="name">
+                        <small class="error" *ngIf="form.controls.name.errors?.required && form.controls.name.touched">
+                            Ship name field is required
+                        </small>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Ship model" class="form-control" formControlName="model">
+                        <input type="text" placeholder="Ship model*" class="form-control" formControlName="model">
+                        <small class="error"
+                            *ngIf="form.controls.model.errors?.required && form.controls.model.touched">
+                            Ship model field is required
+                        </small>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Ship class" class="form-control"
+                        <input type="text" placeholder="Ship class*" class="form-control"
                             formControlName="starship_class">
+                        <small class="error"
+                            *ngIf="form.controls.starship_class.errors?.required && form.controls.starship_class.touched">
+                            Starship class field is required
+                        </small>
                     </div>
                     <div class="form-group">
                         <input type="url" placeholder="Ship Photo Url" class="form-control" autofocus
@@ -26,17 +37,25 @@
                         <input type="text" placeholder="Ship Length" class="form-control" formControlName="length">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Ship Speed" class="form-control"
+                        <input type="text" placeholder="Maximum Speed*" class="form-control"
                             formControlName="max_atmosphering_speed">
+                        <small class="error"
+                            *ngIf="form.controls.max_atmosphering_speed.errors?.required && form.controls.max_atmosphering_speed.touched">
+                            Maximum speed class field is required
+                        </small>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Ship minimum crew" class="form-control" formControlName="crew">
+                        <input type="text" placeholder="Ship minimum crew*" class="form-control" formControlName="crew">
+                        <small class="error" *ngIf="form.controls.crew.errors?.required && form.controls.crew.touched">
+                            Ship minimun crew class field is required
+                        </small>
                     </div>
                     <div class="form-group">
                         <input type="text" placeholder="Total Passengers" class="form-control"
                             formControlName="passengers">
                     </div>
-                    <input type="submit" value="CREATE" class="btn btn-outline-warning btn-block rounded">
+                    <input type="submit" value="CREATE" class="btn btn-outline-warning btn-block rounded"
+                        [disabled]="!form.valid" (click)="showModal()" [routerLink]="['/ships']">
                 </form>
             </div>
         </div>

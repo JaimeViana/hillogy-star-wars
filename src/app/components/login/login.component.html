@@ -11,7 +11,7 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" formControlName="password">
         </div>
-        <button type="submit" class="btn btn-outline-warning btn-block rounded">Login</button>
+        <button type="submit" class="btn btn-outline-warning btn-block rounded" [disabled]="!form.valid">Login</button>
         <div>
             <a [routerLink]="['/register']">Dont have an account? Register here!</a>
         </div>

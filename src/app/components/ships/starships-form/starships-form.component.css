@@ -13,3 +13,19 @@ h2 {
     height: 250px;
     object-fit: contain;
 }
+
+input {
+    background-color: rgb(201, 200, 196);
+}
+
+input.ng-valid.ng-touched {
+    border: 1px solid lightgreen;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.error {
+    color: tomato;
+}

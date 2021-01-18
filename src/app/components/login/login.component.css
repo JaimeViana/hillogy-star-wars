@@ -12,3 +12,7 @@ h1 {
     color: yellow;
     margin-top: 1.7rem;
   }
+
+input {
+    background-color: rgb(201, 200, 196);
+}

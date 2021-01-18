@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserLocalStorageService } from 'src/app/app-services/user.local-storage.service';
 import { User } from 'src/app/models/user.model';
+import Swal from 'sweetalert2';
 import { AuthenticationService } from '../../app-services/authentication.service';
 
 @Component({
@@ -20,8 +21,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router) {
     this.form = new FormGroup({
-      username: new FormControl(''),
-      password: new FormControl('')
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     });
   }
 
@@ -36,9 +37,18 @@ export class LoginComponent implements OnInit {
 
     if (registeredUser) {
       localStorage.setItem('loggedUser', JSON.stringify(registeredUser));
+      this.showModal();
       this.router.navigate(['/ships'])
     } else {
       alert('Something went wrong!')
     }
+  }
+
+  showModal() {
+    Swal.fire(
+      "Nice to see you again, how are you?",
+      "You have been successfully logged in!",
+      "success"
+    );
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/app-services/authentication.service';
 import { User } from 'src/app/models/user.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar-menu',
@@ -23,6 +24,14 @@ export class NavbarMenuComponent implements OnInit {
 
   logOut() {
     localStorage.setItem('loggedUser', JSON.stringify({}));
+    this.showLogOut();
   }
 
+  showLogOut() {
+    Swal.fire(
+      "Nice trip!!",
+      "Hope to see you soon.",
+      "success"
+    )
+  }
 }
