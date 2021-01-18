@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router) {
     this.form = new FormGroup({
-      userName: new FormControl(''),
+      username: new FormControl(''),
       password: new FormControl('')
     });
   }
@@ -31,9 +31,12 @@ export class LoginComponent implements OnInit {
   }
 
 
-  loginUser(userCredentials: FormGroup) {
-    userCredentials = this.form.value;
-    const registeredUser = this.authService.getRegisteredUser(userCredentials)
+  loginUser({ username, password }: { username: string, password: string }) {
+    console.log(username, password);
+
+    const registeredUser = this.authService.getRegisteredUser({ username, password });
+    console.log(registeredUser);
+
     if (registeredUser) {
       localStorage.setItem('loggedUser', JSON.stringify(registeredUser));
       this.router.navigate(['/ships'])

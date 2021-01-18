@@ -20,7 +20,7 @@ export class RegisterComponent {
     this.form = new FormGroup({
       firstName: new FormControl(''),
       lastName: new FormControl(''),
-      userName: new FormControl(''),
+      username: new FormControl(''),
       email: new FormControl(''),
       password: new FormControl(''),
       attemptedPassword: new FormControl('')
@@ -32,9 +32,12 @@ export class RegisterComponent {
     const user = new User({
       firstName: this.form.controls.firstName.value,
       lastName: this.form.controls.lastName.value,
-      userName: this.form.controls.userName.value,
+      username: this.form.controls.username.value,
       password: this.form.controls.password.value
     });
+
+    console.log(user);
+    user.setHashedPassword(user.password);
 
     if (user.comparePassword(this.form.controls.attemptedPassword.value)) {
       this.userLocalStorageService.registerUser(user);
