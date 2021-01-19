@@ -10,9 +10,8 @@ export class AuthenticationService {
   users: User[];
 
   constructor() {
-    this.users = JSON.parse(localStorage.getItem('users')).map(user => new User(user));
+    this.getUsersLocalstorage();
   }
-
 
   checkIfRepeatedUsername(username: any): boolean {
     return (this.users.find(user => user.username === username)) ? true : false;
@@ -26,18 +25,24 @@ export class AuthenticationService {
     }
   }
 
-  getRegisteredUser({ username, password }: { username: string, password: string }): User | null {
-    console.log(username);
-
+  getRegisteredUser({ username, password }: { username: string, password: string }): User | null | boolean {
+    this.getUsersLocalstorage();
     const user = this.users.find((user: User) => user.username === username);
-    console.log(user);
+    if (user === undefined) {
+      return false
+    } else {
+      return user.comparePassword(password) ? user : null;
+    }
 
-    return user.comparePassword(password) ? user : null;
   }
 
   checkIfLogged(userInput: User): any {
     const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
     return loggedUser.username === userInput.username && loggedUser.password === userInput.password ? true : false;
+  }
+
+  getUsersLocalstorage() {
+    this.users = JSON.parse(localStorage.getItem('users')).map(user => new User(user));
   }
 
 

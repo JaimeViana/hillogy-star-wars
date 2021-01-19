@@ -24,10 +24,13 @@ export class LoginComponent implements OnInit {
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     });
+
   }
 
   ngOnInit(): void {
     this.users = JSON.parse(localStorage.getItem('users'));
+    console.log(this.users);
+
     localStorage.setItem('loggedUser', JSON.stringify({}));
   }
 
@@ -35,10 +38,10 @@ export class LoginComponent implements OnInit {
   loginUser({ username, password }: { username: string, password: string }) {
     const registeredUser = this.authService.getRegisteredUser({ username, password });
 
-    if (registeredUser) {
+    if (registeredUser !== false) {
       localStorage.setItem('loggedUser', JSON.stringify(registeredUser));
       this.showModal();
-      this.router.navigate(['/ships'])
+      this.router.navigate(['/ships']);
     } else {
       this.showError();
     }
@@ -55,7 +58,7 @@ export class LoginComponent implements OnInit {
   showError() {
     Swal.fire(
       "Nope, nope...",
-      "Something went wrong",
+      "You are not registered. Please, create an account.",
       "error"
     )
   }
