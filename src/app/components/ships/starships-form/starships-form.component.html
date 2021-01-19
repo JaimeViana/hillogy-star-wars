@@ -54,8 +54,8 @@
                         <input type="text" placeholder="Total Passengers" class="form-control"
                             formControlName="passengers">
                     </div>
-                    <input type="submit" value="CREATE" class="btn btn-outline-warning btn-block rounded"
-                        [disabled]="!form.valid" (click)="showModal()" [routerLink]="['/ships']">
+                    <button type="submit" value="CREATE" class="btn btn-outline-warning btn-block rounded"
+                        [disabled]="!form.valid" (click)="showModal()" [routerLink]="['/ships']"></button>
                 </form>
             </div>
         </div>
